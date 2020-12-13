@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:news/app/domain/entities/app.dart';
 import 'package:news/user/presentation/widgets/favourites_floating_button.dart';
+
 import '../widgets/build_data_view.dart';
 
 class NewsPage extends StatelessWidget {

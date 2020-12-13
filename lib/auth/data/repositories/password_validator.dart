@@ -14,6 +14,7 @@ PasswordValidationResult validatePassword(String password) {
 
   const exp = r'^[a-zA-Z0-9_@&$]+$';
   RegExp regExp = RegExp(exp);
+
   if (!regExp.hasMatch(password)) {
     return PasswordValidationResult.InvalidCharacters;
   }

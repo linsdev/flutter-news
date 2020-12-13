@@ -1,0 +1,9 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:news/core/domain/repositories/shared_var.dart';
+import 'package:news/core/presentation/manager/text_editing_controller_provider.dart';
+
+final emailTextFormProvider = textEditingControllerProvider();
+final passwordTextFormProvider = textEditingControllerProvider();
+
+final emailErrorProvider = StateNotifierProvider((ref) => SharedString(''));
+final passwordErrorProvider = StateNotifierProvider((ref) => SharedString(''));

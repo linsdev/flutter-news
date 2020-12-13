@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:news/app/domain/entities/app.dart';
 import 'package:news/news/data/data_sources/newsapi.dart';
 import 'package:news_api_flutter_package/model/article.dart';
-import 'package:news_api_flutter_package/news_api_flutter_package.dart';
-import 'package:intl/intl.dart';
-
-import 'package:news/app/domain/entities/app.dart';
 
 Widget buildTopHeadlinesView(BuildContext context, {String country = "ua"}) {
   return FutureBuilder<List<Article>>(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:news/news/presentation/widgets/build_data_view.dart';
 import 'package:news/user/domain/use_cases/remove_favourite.dart';
 import 'package:news_api_flutter_package/model/article.dart';
-
-import 'package:news/news/presentation/widgets/build_data_view.dart';
 
 class FavouritesListView extends StatefulWidget {
   final List<Article> articles;
@@ -10,16 +9,16 @@ class FavouritesListView extends StatefulWidget {
   FavouritesListView(this.articles);
 
   @override
-  MyAppState createState() {
-    return MyAppState(articles);
+  _FavouritesListViewState createState() {
+    return _FavouritesListViewState(articles);
   }
 }
 
-class MyAppState extends State<FavouritesListView> {
+class _FavouritesListViewState extends State<FavouritesListView> {
   final List<Article> articles;
   final List<String> items;
 
-  MyAppState(this.articles)
+  _FavouritesListViewState(this.articles)
       : items = List<String>.generate(articles.length, (i) => "$i");
 
   @override

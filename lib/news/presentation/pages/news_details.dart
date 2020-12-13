@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:news/core/domain/repositories/shared_var.dart';
+import 'package:news/news/presentation/widgets/build_data_view.dart';
+import 'package:news/user/domain/use_cases/add_favourite.dart';
 import 'package:news_api_flutter_package/model/article.dart';
 
-import 'package:news/user/domain/use_cases/add_favourite.dart';
-import 'package:news/news/presentation/widgets/build_data_view.dart';
-
-class WidgetValue extends StateNotifier<Widget> {
-  WidgetValue() : super(Icon(Icons.favorite_border));
-  void setWidget(Widget widget) {
-    state = widget;
-  }
-}
-
-final buttonIconProvider =
-    StateNotifierProvider.autoDispose((ref) => WidgetValue());
+final buttonIconProvider = StateNotifierProvider.autoDispose(
+    (ref) => SharedWidget(Icon(Icons.favorite_border)));
 
 class NewsDetailsPage extends ConsumerWidget {
   @override
@@ -29,7 +22,7 @@ class NewsDetailsPage extends ConsumerWidget {
             icon: buttonIcon,
             tooltip: 'Add to favourites',
             onPressed: () async {
-              context.read(buttonIconProvider).setWidget(Icon(Icons.favorite));
+              context.read(buttonIconProvider).set(Icon(Icons.favorite));
               await addFavourite(article);
             },
           )

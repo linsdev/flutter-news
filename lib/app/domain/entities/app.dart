@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:news/auth/presentation/pages/sign_in.dart';
 import 'package:news/app/presentation/pages/init.dart';
+import 'package:news/auth/presentation/pages/sign_in.dart';
 import 'package:news/news/presentation/pages/news.dart';
 import 'package:news/news/presentation/pages/news_details.dart';
 import 'package:news/news/presentation/pages/news_search.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:news/auth/presentation/widgets/sign_in_with_email_password.dart';
+import 'package:news/auth/presentation/widgets/sign_in_with_email_password/sign_in_with_email_password.dart';
 
 class SignInPage extends StatelessWidget {
   @override

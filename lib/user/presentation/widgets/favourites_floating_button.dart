@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:news/app/domain/entities/app.dart';
 
 Widget favouritesFloatingButton(BuildContext context) {

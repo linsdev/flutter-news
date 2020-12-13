@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:news/auth/domain/entities/email_password.dart';
-import 'package:news/auth/domain/repositories/email_password_validator.dart';
 import 'package:news/user/domain/repositories/firestore_add_user.dart';
 
 enum SignInResult {
@@ -9,19 +7,13 @@ enum SignInResult {
   EmailPasswordInvalid,
 }
 
-Future<SignInResult> signIn(EmailPassword emailPassword) async {
-  if (emailPassword.validation == EmailPasswordValidationResult.Invalid) {
-    return SignInResult.EmailPasswordInvalid;
-  }
-
+Future<SignInResult> signIn(String email, String password) async {
   try {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailPassword.email,
-      password: emailPassword.password,
-    );
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
-      return await _createUser(emailPassword);
+      return await _createUser(email, password);
     } else {
       return SignInResult.EmailPasswordInvalid;
     }
@@ -29,12 +21,10 @@ Future<SignInResult> signIn(EmailPassword emailPassword) async {
   return SignInResult.Success;
 }
 
-Future<SignInResult> _createUser(EmailPassword emailPassword) async {
+Future<SignInResult> _createUser(String email, String password) async {
   try {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: emailPassword.email,
-      password: emailPassword.password,
-    );
+    await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: password);
   } on FirebaseAuthException catch (e) {
     return SignInResult.EmailPasswordInvalid;
   }

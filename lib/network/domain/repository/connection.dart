@@ -1,10 +1,6 @@
 import 'dart:async';
-import 'package:connectivity/connectivity.dart';
 
-Future<bool> checkNetworkConnection() async {
-  var connectivityResult = await (Connectivity().checkConnectivity());
-  return connectivityResult != ConnectivityResult.none;
-}
+import 'package:connectivity/connectivity.dart';
 
 Future<void> waitForNetworkConnection() async {
   final connection = Connectivity()

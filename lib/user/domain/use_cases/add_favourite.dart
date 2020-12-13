@@ -1,9 +1,11 @@
+import 'package:news/user/data/data_sources/firestore_names.dart';
 import 'package:news/user/data/data_sources/firestore_user_doc.dart';
+import 'package:news/user/domain/repositories/firestore_get_favourites.dart';
 import 'package:news_api_flutter_package/model/article.dart';
 
 Future<void> addFavourite(Article article) async {
   final userDocRef = getUserDocRef();
-  final List favourites = (await userDocRef.get()).data()['favourites'];
+  final favourites = await getFavouritesInJson(userDocRef);
 
   if (!(favourites.any((e) => e['url'] == article.url))) {
     favourites.add({
@@ -25,6 +27,6 @@ Future<void> addFavourite(Article article) async {
         'country': article.source.country,
       },
     });
-    await userDocRef.set({'favourites': favourites});
+    await userDocRef.set({FirestoreNames.FavouritesField: favourites});
   }
 }
