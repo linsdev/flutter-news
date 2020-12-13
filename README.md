@@ -1,4 +1,5 @@
 # News
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="30"/>](https://www.buymeacoffee.com/linsdev)
 
 News app with favorites list available across devices. The app uses newsapi.org for fetching news and Firebase (Auth, Firestore) for UX.
 
