@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:news/core/domain/repositories/shared_var.dart';
 import '../widgets/build_data_view.dart';
 
-class WidgetValue extends StateNotifier<Widget> {
-  WidgetValue() : super(SizedBox.shrink());
-  void setWidget(Widget widget) {
-    state = widget;
-  }
-}
+final contentProvider =
+    StateNotifierProvider((ref) => SharedWidget(SizedBox.shrink()));
 
-final contentProvider = StateNotifierProvider((ref) => WidgetValue());
+const noneUnderlineInputBorder = UnderlineInputBorder(
+  borderSide: BorderSide(style: BorderStyle.none),
+);
 
 class NewsSearchPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final content = watch(contentProvider.state);
-    final noneUnderlineInputBorder =
-        UnderlineInputBorder(borderSide: BorderSide(style: BorderStyle.none));
+
     return Scaffold(
       appBar: AppBar(
         title: TextField(
@@ -34,10 +32,10 @@ class NewsSearchPage extends ConsumerWidget {
             hintText: 'Type to search',
           ),
           onSubmitted: (query) {
-            if (!query.trim().isEmpty) {
+            if (query.trim().isNotEmpty) {
               context
                   .read(contentProvider)
-                  .setWidget(buildEverythingView(context, query));
+                  .set(buildEverythingView(context, query));
             }
           },
         ),
