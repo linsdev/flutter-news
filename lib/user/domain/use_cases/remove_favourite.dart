@@ -7,5 +7,5 @@ Future<void> removeFavourite(Article article) async {
   final userDocRef = getUserDocRef();
   final favourites = await getFavouritesInJson(userDocRef);
   favourites.removeWhere((e) => e['url'] == article.url);
-  await userDocRef.set({FirestoreNames.FavouritesField: favourites});
+  await userDocRef.set({FirestoreNames.favouritesField: favourites});
 }

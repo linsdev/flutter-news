@@ -4,6 +4,6 @@ import 'package:news/user/data/data_sources/firestore_names.dart';
 
 DocumentReference getUserDocRef() {
   return FirebaseFirestore.instance
-      .collection(FirestoreNames.UserCollection)
+      .collection(FirestoreNames.userCollection)
       .doc(FirebaseAuth.instance.currentUser.uid);
 }

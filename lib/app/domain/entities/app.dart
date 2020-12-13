@@ -8,12 +8,12 @@ import 'package:news/news/presentation/pages/news_search.dart';
 import 'package:news/user/presentation/pages/favourites.dart';
 
 class App extends StatelessWidget {
-  static const PageInit = '/';
-  static const PageSignIn = '/login';
-  static const PageNews = '/news';
-  static const PageNewsSearch = '/news/search';
-  static const PageNewsDetails = '/news/details';
-  static const PageFavourites = '/user/favourites';
+  static const pageInit = '/';
+  static const pageSignIn = '/login';
+  static const pageNews = '/news';
+  static const pageNewsSearch = '/news/search';
+  static const pageNewsDetails = '/news/details';
+  static const pageFavourites = '/user/favourites';
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +27,14 @@ class App extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: PageInit,
+      initialRoute: pageInit,
       routes: {
-        PageInit: (context) => InitPage(),
-        PageSignIn: (context) => SignInPage(),
-        PageNews: (context) => NewsPage(),
-        PageNewsSearch: (context) => NewsSearchPage(),
-        PageNewsDetails: (context) => NewsDetailsPage(),
-        PageFavourites: (context) => FavouritesPage(),
+        pageInit: (context) => InitPage(),
+        pageSignIn: (context) => SignInPage(),
+        pageNews: (context) => NewsPage(),
+        pageNewsSearch: (context) => NewsSearchPage(),
+        pageNewsDetails: (context) => NewsDetailsPage(),
+        pageFavourites: (context) => FavouritesPage(),
       },
     );
   }

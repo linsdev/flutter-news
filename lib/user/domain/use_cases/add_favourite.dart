@@ -7,7 +7,7 @@ Future<void> addFavourite(Article article) async {
   final userDocRef = getUserDocRef();
   final favourites = await getFavouritesInJson(userDocRef);
 
-  if (!(favourites.any((e) => e['url'] == article.url))) {
+  if (!favourites.any((e) => e['url'] == article.url)) {
     favourites.add({
       'adding_date': DateTime.now().millisecondsSinceEpoch,
       'author': article.author,
@@ -27,6 +27,6 @@ Future<void> addFavourite(Article article) async {
         'country': article.source.country,
       },
     });
-    await userDocRef.set({FirestoreNames.FavouritesField: favourites});
+    await userDocRef.set({FirestoreNames.favouritesField: favourites});
   }
 }

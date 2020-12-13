@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:news/user/domain/repositories/firestore_add_user.dart';
 
 enum SignInResult {
-  Success,
-  EmailPasswordInvalid,
+  success,
+  emailPasswordInvalid,
 }
 
 Future<SignInResult> signIn(String email, String password) async {
@@ -13,21 +12,21 @@ Future<SignInResult> signIn(String email, String password) async {
         .signInWithEmailAndPassword(email: email, password: password);
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
-      return await _createUser(email, password);
+      return _createUser(email, password);
     } else {
-      return SignInResult.EmailPasswordInvalid;
+      return SignInResult.emailPasswordInvalid;
     }
   }
-  return SignInResult.Success;
+  return SignInResult.success;
 }
 
 Future<SignInResult> _createUser(String email, String password) async {
   try {
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
-  } on FirebaseAuthException catch (e) {
-    return SignInResult.EmailPasswordInvalid;
+  } on FirebaseAuthException {
+    return SignInResult.emailPasswordInvalid;
   }
   await firestoreAddUser();
-  return SignInResult.Success;
+  return SignInResult.success;
 }

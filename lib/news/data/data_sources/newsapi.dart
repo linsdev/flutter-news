@@ -4,7 +4,7 @@ import 'package:news_api_flutter_package/news_api_flutter_package.dart';
 NewsAPI newsAPI;
 
 Future<void> initNewsapi() async {
-  final RemoteConfig remoteConfig = await RemoteConfig.instance;
+  final remoteConfig = await RemoteConfig.instance;
 
   await remoteConfig.fetch(expiration: const Duration(hours: 1));
   await remoteConfig.activateFetched();

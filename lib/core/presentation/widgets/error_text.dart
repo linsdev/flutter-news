@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 Widget errorText([String text = '']) {
   if (text.isEmpty) {
-    return SizedBox.shrink();
+    return const SizedBox.shrink();
   }
   return Container(
-    padding: EdgeInsets.only(top: 3),
-    constraints: BoxConstraints.tightFor(width: double.maxFinite),
-    child: Text(text, style: TextStyle(color: Colors.red)),
+    padding: const EdgeInsets.only(top: 3),
+    constraints: const BoxConstraints.tightFor(width: double.maxFinite),
+    child: Text(text, style: const TextStyle(color: Colors.red)),
   );
 }

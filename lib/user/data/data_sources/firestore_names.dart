@@ -1,4 +1,4 @@
 class FirestoreNames {
-  static const UserCollection = 'user';
-  static const FavouritesField = 'favourites';
+  static const userCollection = 'user';
+  static const favouritesField = 'favourites';
 }

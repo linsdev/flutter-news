@@ -1,7 +1,7 @@
 enum PasswordValidationResult {
-  Valid,
-  TooShort,
-  InvalidCharacters,
+  valid,
+  tooShort,
+  invalidCharacters,
 }
 
 PasswordValidationResult validatePassword(String password) {
@@ -9,15 +9,15 @@ PasswordValidationResult validatePassword(String password) {
   // upper/lower case letters, numbers, and _ @ & $ symbols.
 
   if (password.length < 6) {
-    return PasswordValidationResult.TooShort;
+    return PasswordValidationResult.tooShort;
   }
 
   const exp = r'^[a-zA-Z0-9_@&$]+$';
-  RegExp regExp = RegExp(exp);
+  final regExp = RegExp(exp);
 
   if (!regExp.hasMatch(password)) {
-    return PasswordValidationResult.InvalidCharacters;
+    return PasswordValidationResult.invalidCharacters;
   }
 
-  return PasswordValidationResult.Valid;
+  return PasswordValidationResult.valid;
 }

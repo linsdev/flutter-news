@@ -13,12 +13,12 @@ class InitPage extends StatelessWidget {
           future: Future(() async {
             await initApp;
             await Navigator.of(context)
-                .pushReplacementNamed(authPageOr(App.PageNews));
+                .pushReplacementNamed(authPageOr(App.pageNews));
           }),
           onWait: waitFor(
-            future: Future.delayed(Duration(seconds: 5)),
+            future: Future.delayed(const Duration(seconds: 5)),
             onWait: const CircularProgressIndicator(),
-            onDone: Text('Please check your Internet connection'),
+            onDone: const Text('Please check your Internet connection'),
           ),
           onDone: const CircularProgressIndicator(),
         ),

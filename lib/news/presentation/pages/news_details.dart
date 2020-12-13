@@ -6,7 +6,7 @@ import 'package:news/user/domain/use_cases/add_favourite.dart';
 import 'package:news_api_flutter_package/model/article.dart';
 
 final buttonIconProvider = StateNotifierProvider.autoDispose(
-    (ref) => SharedWidget(Icon(Icons.favorite_border)));
+    (ref) => SharedWidget(const Icon(Icons.favorite_border)));
 
 class NewsDetailsPage extends ConsumerWidget {
   @override
@@ -22,7 +22,7 @@ class NewsDetailsPage extends ConsumerWidget {
             icon: buttonIcon,
             tooltip: 'Add to favourites',
             onPressed: () async {
-              context.read(buttonIconProvider).set(Icon(Icons.favorite));
+              context.read(buttonIconProvider).set(const Icon(Icons.favorite));
               await addFavourite(article);
             },
           )

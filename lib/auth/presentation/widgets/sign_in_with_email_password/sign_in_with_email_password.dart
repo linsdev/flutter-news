@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:news/core/presentation/widgets/error_text.dart';
+
 import 'provides.dart';
 import 'sign_in_button.dart';
 
@@ -15,7 +15,7 @@ class SignInWithEmailAndPasswordCard extends ConsumerWidget {
 
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             TextFormField(
@@ -29,7 +29,7 @@ class SignInWithEmailAndPasswordCard extends ConsumerWidget {
               obscureText: true,
             ),
             errorText(passwordError),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             SignInButton(),
           ],
         ),

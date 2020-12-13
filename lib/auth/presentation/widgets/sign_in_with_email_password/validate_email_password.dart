@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:news/auth/data/repositories/email_validator.dart';
 import 'package:news/auth/data/repositories/password_validator.dart';
+
 import 'provides.dart';
 
 bool validateEmailPassword(
@@ -17,7 +17,7 @@ bool _emailValid(BuildContext context, String email) {
   final error = context.read(emailErrorProvider);
 
   switch (validateEmail(email)) {
-    case EmailValidationResult.Invalid:
+    case EmailValidationResult.invalid:
       error.set('Email looks like fake');
       break;
 
@@ -33,11 +33,11 @@ bool _passwordValid(BuildContext context, String password) {
   final error = context.read(passwordErrorProvider);
 
   switch (validatePassword(password)) {
-    case PasswordValidationResult.TooShort:
+    case PasswordValidationResult.tooShort:
       error.set('Must contains at least 6 characters');
       break;
 
-    case PasswordValidationResult.InvalidCharacters:
+    case PasswordValidationResult.invalidCharacters:
       error.set(
         'Must consists from letters, numbers, \nand _ @ & \$ symbols',
       );

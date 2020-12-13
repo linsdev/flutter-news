@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:news/core/domain/repositories/shared_var.dart';
+
 import '../widgets/build_data_view.dart';
 
 final contentProvider =
-    StateNotifierProvider((ref) => SharedWidget(SizedBox.shrink()));
+    StateNotifierProvider((ref) => SharedWidget(const SizedBox.shrink()));
 
 const noneUnderlineInputBorder = UnderlineInputBorder(
   borderSide: BorderSide(style: BorderStyle.none),
@@ -19,9 +19,9 @@ class NewsSearchPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: TextField(
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
           autofocus: true,
-          decoration: new InputDecoration(
+          decoration: const InputDecoration(
             border: noneUnderlineInputBorder,
             enabledBorder: noneUnderlineInputBorder,
             disabledBorder: noneUnderlineInputBorder,

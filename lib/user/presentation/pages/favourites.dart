@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:news/core/domain/repositories/shared_var.dart';
 import 'package:news/user/domain/use_cases/get_favourites.dart';
 import 'package:news/user/domain/use_cases/remove_all_favourites.dart';
@@ -17,7 +16,7 @@ class FavouritesPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favourites'),
+        title: const Text('Favourites'),
         actions: [_removeAllButtonBuilder(context)],
       ),
       body: body ??
@@ -28,11 +27,11 @@ class FavouritesPage extends ConsumerWidget {
                 List articles = snapshot.data;
                 articles = articles.reversed.toList();
                 if (articles.isEmpty) {
-                  return SizedBox.shrink();
+                  return const SizedBox.shrink();
                 }
                 return FavouritesListView(articles);
               }
-              return Center(child: const CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             },
           ),
     );
@@ -41,11 +40,11 @@ class FavouritesPage extends ConsumerWidget {
 
 Widget _removeAllButtonBuilder(BuildContext context) {
   return IconButton(
-    icon: Icon(Icons.delete),
+    icon: const Icon(Icons.delete),
     tooltip: 'Remove all',
     onPressed: () async {
       await removeAllFavourite();
-      context.read(bodyProvider).set(SizedBox.shrink());
+      context.read(bodyProvider).set(const SizedBox.shrink());
     },
   );
 }

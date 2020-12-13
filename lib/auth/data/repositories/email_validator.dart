@@ -1,6 +1,6 @@
 enum EmailValidationResult {
-  Valid,
-  Invalid,
+  valid,
+  invalid,
 }
 
 EmailValidationResult validateEmail(String email) {
@@ -9,13 +9,13 @@ EmailValidationResult validateEmail(String email) {
   // https://www.regexlib.com/REDetails.aspx?regexp_id=2558
   const exp = r"^((([!#$%&'*+\-\/=?^_`{|}~\w])|([!#$%&'*+\-\/=?^_"
       r"`{|}~\w][!#$%&'*+\-\/=?^_`{|}~\.\w]{0,}[!#$%&'*+\"
-      r"-\/=?^_`{|}~\w]))[@]\w+([-.]\w+)*\.\w+([-.]\w+)*)$";
+      r'-\/=?^_`{|}~\w]))[@]\w+([-.]\w+)*\.\w+([-.]\w+)*)$';
 
-  RegExp regExp = RegExp(exp);
+  final regExp = RegExp(exp);
 
   if (!regExp.hasMatch(email)) {
-    return EmailValidationResult.Invalid;
+    return EmailValidationResult.invalid;
   }
 
-  return EmailValidationResult.Valid;
+  return EmailValidationResult.valid;
 }

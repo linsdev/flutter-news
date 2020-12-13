@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:news/auth/presentation/widgets/sign_in_with_email_password/sign_in_with_email_password.dart';
 
 class SignInPage extends StatelessWidget {
@@ -11,7 +10,6 @@ class SignInPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SignInWithEmailAndPasswordCard(),

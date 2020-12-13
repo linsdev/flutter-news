@@ -4,22 +4,22 @@ import 'package:news/user/domain/use_cases/remove_favourite.dart';
 import 'package:news_api_flutter_package/model/article.dart';
 
 class FavouritesListView extends StatefulWidget {
+  const FavouritesListView(this.articles);
+
   final List<Article> articles;
 
-  FavouritesListView(this.articles);
-
   @override
-  _FavouritesListViewState createState() {
-    return _FavouritesListViewState(articles);
-  }
+  _FavouritesListViewState createState() => _FavouritesListViewState();
 }
 
 class _FavouritesListViewState extends State<FavouritesListView> {
-  final List<Article> articles;
-  final List<String> items;
+  List<String> items;
 
-  _FavouritesListViewState(this.articles)
-      : items = List<String>.generate(articles.length, (i) => "$i");
+  @override
+  void initState() {
+    super.initState();
+    items = List<String>.generate(widget.articles.length, (i) => '$i');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _FavouritesListViewState extends State<FavouritesListView> {
       itemCount: items.length,
       itemBuilder: (context, index) {
         final item = items[index];
-        Article article = articles[index];
+        final article = widget.articles[index];
         return Card(
           child: Dismissible(
             key: Key(item),
@@ -35,18 +35,18 @@ class _FavouritesListViewState extends State<FavouritesListView> {
               setState(() {
                 items.removeAt(index);
               });
-              removeFavourite(article).then((value) {
+              await removeFavourite(article).then((value) {
                 Scaffold.of(context).showSnackBar(
-                  SnackBar(content: Text("Removed from favourites")),
+                  const SnackBar(content: Text('Removed from favourites')),
                 );
               });
             },
             background: Container(
               color: Colors.red,
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                children: const [
                   Text('REMOVE', style: TextStyle(color: Colors.white)),
                   Text('REMOVE', style: TextStyle(color: Colors.white)),
                 ],

@@ -9,13 +9,13 @@ class NewsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Top News'),
+        title: const Text('Top News'),
         actions: [
           IconButton(
-            icon: Icon(Icons.search),
+            icon: const Icon(Icons.search),
             tooltip: 'Search',
             onPressed: () {
-              Navigator.pushNamed(context, App.PageNewsSearch);
+              Navigator.pushNamed(context, App.pageNewsSearch);
             },
           )
         ],
